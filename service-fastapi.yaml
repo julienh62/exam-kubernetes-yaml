@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: fastapi
+spec:
+  selector:
+    app: fastapi
+  ports:
+    - protocol: TCP
+      port: 80         # Port externe pour accéder à l'application
+      targetPort: 5000  # Port interne du conteneur FastAPI
+      nodePort: 30009
+  type: NodePort
+
