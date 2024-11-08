@@ -1,0 +1,23 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: fastapi-ingress
+  annotations:
+    cert-manager.io/cluster-issuer: "letsencrypt-prod"
+    nginx.ingress.kubernetes.io/ssl-redirect: "true"
+spec:
+  tls:
+  - hosts:
+    - kubernetes.julien-hennebo.cloudns.be   # Remplacez par votre domaine
+    secretName: fastapi-tls  # Le nom du secret pour le certificat SSL
+  rules:
+  - host: kubernetes.julien-hennebo.cloudns.be  # Remplacez par votre domaine
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: fastapi  # Le nom du service FastAPI
+            port:
+              number: 5000   # Port exposé par le service FastAPI
