@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pgadmin  # Nom du déploiement, utilisé pour identifier le déploiement dans le cluster
+spec:
+  replicas: 1  # Nombre de réplicas pour PGAdmin (généralement 1)
+  selector:
+    matchLabels:
+      app: pgadmin  # Labels utilisés pour associer les Pods avec ce déploiement
+  template:
+    metadata:
+      labels:
+        app: pgadmin  # Labels attachés aux Pods créés par ce déploiement
+    spec:
+      containers:
+        - name: pgadmin  # Nom du conteneur
+          image: julh62/fast1:latest  # Image Docker pour PGAdmin
+          ports:
+            - containerPort: 80  # Port exposé par le conteneur
+          env:
+            - name: PGADMIN_DEFAULT_EMAIL
+              value: "jhennebo@gmail.com"  # Email par défaut pour PGAdmin
+            - name: PGADMIN_DEFAULT_PASSWORD
+              value: "admin"  # Mot de passe par défaut pour PGAdmin (remplacez par un mot de passe sécurisé)
