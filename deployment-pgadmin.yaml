@@ -14,9 +14,9 @@ spec:
     spec:
       containers:
         - name: pgadmin  # Nom du conteneur
-          image: julh62/fast1:latest  # Image Docker pour PGAdmin
+          image: dpage/pgadmin4:latest  # Image Docker pour PGAdmin
           ports:
-            - containerPort: 80  # Port exposé par le conteneur
+            - containerPort: 8081  # Port exposé par le conteneur
           env:
             - name: PGADMIN_DEFAULT_EMAIL
               value: "jhennebo@gmail.com"  # Email par défaut pour PGAdmin

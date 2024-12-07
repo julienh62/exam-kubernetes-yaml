@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: fastapi
-        image: julh62/fast1:latest  # Remplacez par le nom de votre image FastAPI
+        image: julh62/exam-kubernetes_fastapi:latest  # Remplacez par le nom de votre image FastAPI
         ports:
         - containerPort: 5000
         env:

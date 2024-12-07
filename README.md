@@ -25,6 +25,16 @@ touch .gitignore
 
 docker image prune #pour supprimer images non utilisees par un conteneur docker image prune
 
+kubectl delete deployments --all -n default 
+kubectl apply -f "./*.yaml"
+ kubectl delete ingress --all -n default 
+ kubectl delete svc --all -n default 
+kubectl delete pvc --all -n default 
+kubectl delete -f "./*.yaml"
+
+
+
+
 #.1 Appliquer le Namespace kubectl apply -f YAML-STANDARD/namespace.yaml
 
 #.2 Appliquer les Secrets kubectl apply -f YAML-STANDARD/secret-postgres.yaml #.3 Appliquer les Déploiements kubectl apply -f YAML-STANDARD/deployments/deployment-postgres.yaml kubectl apply -f YAML-STANDARD/deployments/deployment-pgadmin.yaml kubectl apply -f YAML-STANDARD/deployments/deployment-fastapi.yaml
@@ -138,6 +148,11 @@ kubectl exec -it <nom_du_pod_postgresql> -- /bin/bash
 vous pouvez essayer de vous connecter à PostgreSQL avec le client psql :
 psql -h localhost -U admin storedb
 
+#recuper l'image pour pgadmin   (image officielle sur dockerhub)  
+docker pull dpage/pgadmin4:latest
+
+
+
 
 #verifier si storageclass existe
 kubectl get storageclass
@@ -186,3 +201,4 @@ kubectl get pods -n cert-manager
 #sauvegarde base donnée maitre kubernetes
 # a faire plus tard
 k3s etcd-snapshot save 
+

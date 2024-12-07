@@ -8,10 +8,10 @@ metadata:
 spec:
   tls:
   - hosts:
-    - kubernetes.julien-hennebo.cloudns.be   # Remplacez par votre domaine
+    - jhennebo.be   # Remplacez par votre domaine
     secretName: fastapi-tls  # Le nom du secret pour le certificat SSL
   rules:
-  - host: kubernetes.julien-hennebo.cloudns.be  # Remplacez par votre domaine
+  - host: jhennebo.be  # Remplacez par votre domaine
     http:
       paths:
       - path: /
