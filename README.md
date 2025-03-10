@@ -201,4 +201,32 @@ kubectl get pods -n cert-manager
 #sauvegarde base donnée maitre kubernetes
 # a faire plus tard
 k3s etcd-snapshot save 
+Désinstaller K3s
+
+Exécutez la commande suivante pour désinstaller K3s proprement :
+
+sudo /usr/local/bin/k3s-killall.sh
+sudo /usr/local/bin/k3s-uninstall.sh
+
+Cela arrêtera tous les services K3s et supprimera les fichiers liés à K3s.
+2. Vérifier que K3s a été complètement désinstallé
+
+Assurez-vous que le service K3s a été supprimé :
+
+sudo systemctl status k3s
+
+Cela doit renvoyer que le service n'existe plus ou est inactif.
+3. Supprimer les fichiers de configuration et de données K3s
+
+Vous pouvez également supprimer les fichiers restants dans /etc/rancher/k3s/ et /var/lib/rancher/k3s/ :
+
+sudo rm -rf /etc/rancher/k3s
+sudo rm -rf /var/lib/rancher/k3s
+
+Cela supprimera toute configuration et tout état laissé par K3s.
+4. Supprimer les containers Docker/Kubernetes (si nécessaire)
+
+Si vous souhaitez également nettoyer les conteneurs Docker (en cas de réutilisation de Docker), vous pouvez supprimer tous les conteneurs et images Docker :
+
+sudo docker system prune -a
 
